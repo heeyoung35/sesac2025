@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>희영이의 프로필 페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+
+    <style>
+        /* 브라우저마다 기본적으로 가진 여백 초기화 */
+        body, h1, h2, p, ul, table {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:  "Gugi", sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.7;
+        }
+
+        /* 페이지 전체를 감싸는 컨테이너(가운데 정렬을 위해) */
+        .container {
+            width: 90%;
+            max-width: 800px; /* 화면이 아무리 커져도 최대 너비는 800px */
+            margin: 40px auto;  /* 위아래 40px, 좌우는 자동으로 여백을 줘서 가운데 정렬 */
+            background-color: white;
+        }
+        
+        header{
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: rgb(46, 45, 45);
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 25px;
+            font-weight: bold;
+            color: rgb(46, 45, 45);
+            border-bottom: 1px solid rgb(179, 179, 179);
+        }
+
+        section {
+            border-bottom: 1px dotted rgb(206, 206, 206);
+            margin-left: 10px;
+            margin-right: 10px;
+           
+        }
+        
+        ul {
+            list-style-type: none;
+            height: 50px;
+            display: flex;
+            justify-content: left;
+        }
+
+        li {
+            text-align: center;
+            line-height: 30px;
+            border-radius: 10px;
+            width: 100px;
+            height: 30px;
+            background-color: rgb(0, 91, 0);
+            color: wheat;
+            margin-left: 15px;
+        }
+
+        caption {
+            text-align: center;
+        }
+
+        table {
+            width: 780px;
+            height: 100px;
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 30px;
+            
+        }
+
+        thead {
+            background-color: rgb(198, 197, 197);
+        }
+
+        th, td {
+            border: 1px solid rgb(179, 179, 179);
+        }
+
+        figure {
+            margin-bottom: 30px;
+        }
+
+        audio {
+            margin-bottom: 30px;
+        }
+
+        p {
+             margin-bottom: 30px;
+        }
+
+        a {
+            text-decoration-line: none;
+        }
+
+         fieldset {
+            width: 750px;
+            height: 250px;
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 600px;
+            height: 300px;
+            text-align: center;
+            
+        }
+        label {
+            display: block;
+        }
+        input {
+            width: 750px;
+            display: block;
+            margin-bottom: 10px;
+        }
+       
+        textarea {
+            width: 750px;
+            height: 70px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        button {
+             background-color:rgb(0, 91, 0);
+             color: wheat;
+             border-radius: 5px;
+             margin-bottom: 20px;
+             width: 70px;
+             height: 30px;
+        }
+
+        button:hover {
+            background-color: wheat;
+            color: rgb(0, 91, 0);
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+                         
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>강희영(Heeyoung Kang)</h1>
+            <p>안녕하세요 성장을 즐기는 예비 개발자 강희영입니다<br>
+                "배움에는 끝이없다."는 말을 좋아합니다.
+            </p>
+        </header>
+        <main>
+            <section>
+                <h3>🖥보유기술(Skills)</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>📜시간표(Schedule)</h3>
+                <table>
+                    <caption>2025년 1학기 시간표</caption>
+                    <thead>
+                        <tr>
+                            <th>시간</th>
+                            <th>월요일</th>
+                            <th>수요일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1교시</th>
+                            <td>웹프로그래밍 기초</td>
+                            <td rowspan="2">자료구조</td>
+                        </tr>
+                        <tr>
+                            <th>2교시</th>
+                            <td>웹프로그래밍 기초</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3>🎞좋아하는 사진</h3>
+                <figure>
+                    <div>
+                        <img src="forest1.PNG" alt="숲" >
+                        <figcaption>제가 가장 좋아하는 이미지입니다.</figcaption>
+                    </div>
+                </figure>
+            </section>
+
+            <section>
+                <h3>🎧좋아하는 음악</h3>
+                <audio src="sample/audio/major.mp3" controls></audio>
+            </section>
+
+            <section>
+                <h3>🔗관련 링크</h3>
+                <p>저의 포트폴리오를 더 보고 싶다면 <a href="https://github.com/heeyoung35" target="_blank">제 깃허브</a>를 방문해 주세요</p>
+            </section>
+
+            <section>
+                <h3>📚방명록(Guestbook)</h3>
+                <form action="#" method="get">
+                    <fieldset>
+                        <legend>방명록 남기기</legend>
+                        <div class="position-container">
+                            <label for="user-id">이름:</label>
+                            <input type="text" id="user-id" name="userId" placeholder="이름을 작성해주세요">
+                        </div>
+                        <div class="position-container">
+                            <label for="memo">내용:</label>
+                            <textarea name="memo" id="memo" role="10" placeholder="내용을 작성해주세요"></textarea>
+                        </div>
+                        <button type="submit">남기기</button>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+        <footer>Copyright2025. Heyoung Kang. All right reserved.</footer>
+    </div>
+</body>
+</html>
