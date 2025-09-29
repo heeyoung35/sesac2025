@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML 실습</h1>
+    <header>
+        <h2>강희영(Heeyoung Kang)</h2>
+        <p>안녕하세요 성장을 즐기는 예비 개발자 강희영입니다<br>
+            "배움에는 끝이없다."는 말을 좋아합니다.
+        </p>
+    </header>
+    <main>
+        <h3>🖥보유기술(Skills)</h3>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+        </ul>
+
+        <hr>
+
+        <h3>📜시간표(Schedule)</h3>
+        <caption>2025년 1학기 시간표</caption>
+        <table>
+            <thead>
+                <tr>
+                    <th>시간</th>
+                    <th>월요일</th>
+                    <th>수요일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1교시</th>
+                    <td>웹프로그래밍 기초</td>
+                    <td rowspan="2">자료구조</td>
+                </tr>
+                <tr>
+                    <th>2교시</th>
+                    <td>웹프로그래밍 기초</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🎞좋아하는 사진</h3>
+        <figure>
+            <img src="sample/image/city1.PNG" alt="도시" width="500px" height="300px">
+            <figcaption>제가 가장 좋아하는 이미지입니다.</figcaption>
+        </figure>
+
+        <h3>🎧좋아하는 음악</h3>
+        <audio src="sample/audio/major.mp3" controls></audio>
+
+        <h3>🔗관련 링크</h3>
+        <p>저의 포트폴리오를 더 보고 싶다면 <a href="https://github.com/heeyoung35" target="_blank">제 깃허브</a>를 방문해 주세요</p>
+
+        <h3>📚방명록(Guestbook)</h3>
+        <form action="#" method="get">
+            <fieldset>
+                <legend>방명록 남기기</legend>
+                <div>
+                    <label for="user-id">이름:</label>
+                    <input type="text" id="user-id" name="userId" placeholder="이름을 작성해주세요">
+                </div>
+                <div>
+                    <label for="memo">내용:</label>
+                    <textarea name="memo" id="memo" role="10" placeholder="내용을 작성해주세요"></textarea>
+                </div>
+                <button type="submit">남기기</button>
+            </fieldset>
+        </form>
+    </main>
+    <footer>Copyright2025. Heyoung Kang. All right reserved.</footer>
+</body>
+</html>
