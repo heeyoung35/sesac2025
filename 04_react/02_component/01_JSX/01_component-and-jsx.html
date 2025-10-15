@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        /* 1. 클래스형 컴포넌트, 컴포넌트 앞 글자를 반드시 대문자로 시작*/
+        // 클래스형 컴포넌트는 리액트 컴포넌트를 상속받고 render라는 함수로 반드시 그려준다.
+        class TitleClass extends React.Component {
+            render() {
+                return React.createElement(
+                    "h1",
+                    {className: 'classComponent'},
+                    "클래스형 컴포넌트입니다."
+                )
+            }
+        }
+
+        /* 2. 함수형 컴포넌트 */
+        function OldWayComponent() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement("h1", {className: 'greeting'}, "createElement 방식"),
+                React.createElement("p", null, "코드가 길고 복잡하다.")
+
+            );
+        }
+
+        /* 컴포넌트란?
+        - UI를 재소용 가능한 '부품'으로 나눈 것이다(예: 버튼, 헤더 등)
+        - 리액트 엘리먼트를 반환하는 '자바스크립트 함수이다
+        - 
+        */
+       
+        /* JSX 방식*/
+        // 자바스크립트를 확장한 문법으로 HTML구조와 같아서 구조를 쉽게 확인할 수 있다. 함수형 컴포넌트로 해석해서 그려준다.
+        function NewWayComponent() {
+            return (
+                <div>
+                    <h1 className='greeting'>JSX방식</h1>
+                    <p>마치 HTML처럼 보여서 훨씬 직관적이다!</p>
+                </div>
+            )
+        }
+
+         /* 컴포넌트 합성*/
+        function App() {
+            return (
+                // 최상위에는 하나의 요소만 와야하기 때문에 여러 요소를 하나로 묶어주기 위한 빈 태그(fragment)를 사용
+                // JSX에서는 /닫는 태그가 없어도 되는 요소에도 닫는 태그를 반드시 해주어야 한다.
+                <>
+                <OldWayComponent/>
+                <hr/>
+                <NewWayComponent/>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+
+       
+
+    </script>
+</body>
+</html>

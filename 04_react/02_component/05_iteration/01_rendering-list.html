@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const fruits = ['🍎사과','🍊오렌지','🍓딸기','🍍파인애플'];
+
+        //기본 리스트 렌더링(map 활용)
+        function FruitList() {
+            return (
+                <div>
+                    <h2>과일 목록</h2>
+                    <ul>
+                        {/*key: React가 리스트를 렌더링할 때 각 항목을 구분할 수 있도록 도와주는 고유한 값*/}
+                        {/*소괄호 안에 있는 JSX 코드를 함수가 즉시 반환(return)하도록 하기 위함이다.
+                           화살표 함수 본문이 단일 표현식일 때, 중괄호 ${,}$를 생략하고 바로 소괄호 $(,)$로 감싸면 
+                           해당 표현식의 결과값이 자동으로 반환된다. 즉 return키워드가 필요없다.
+                           하지만, 화살표 함수 본문이 여러 줄의 구문을 포함하거나, 
+                           명시적인 로직 처리(변수 선언, 조건문 등)가 필요할 때 중괄호 {}를 사용합니다. */}
+                        {fruits.map( (fruit, index) => (
+                            <li key={index}>{fruit}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        const users = [
+           {id:1, name: "홍길동"}, 
+           {id:2, name: "유관순"}, 
+           {id:3, name: "이순신"} 
+        ]
+
+        function UserList() {
+
+            return (
+                <>
+                    <h2>회원목록</h2>
+                    <ul>
+                        {users.map(user => (
+                            <li key={user.id}>{user.name}</li>
+                        ))}
+                    </ul>
+                </>
+            )
+
+        }
+
+        function App() {
+            return(
+                <>
+                    <FruitList/>
+                    <UserList/>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+
+    </script>
+</body>
+</html>
