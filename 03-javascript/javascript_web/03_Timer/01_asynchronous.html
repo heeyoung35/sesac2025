@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>비동기 프로그래밍</title>
+</head>
+<body>
+<h1>비동기(Asynchronous) 프로그래밍</h1>
+<hr>
+<h3>1. '동기' 식당의 문제점: 블로킹(Blocking)</h3>
+<pre>
+    '동기' 처리는 앞선 작업이 끝날 때까지 다음 작업이 하염없이 기다리는 방식입니다.
+    웹 페이지에서 시간이 오래 걸리는 작업을 동기 방식으로 처리하면, 페이지 전체가 '얼음'처럼 멈춰버립니다.
+    </pre>
+<button id="sync-btn">동기 작업 시작 (3초 멈춤!)</button>
+<button id="test-btn">반응 테스트</button>
+<script>
+    function sleep(delay) {
+        const delayUntil = Date.now() + delay;
+        while(Date.now() < delayUntil); // 3초 동안 cpu를 계속 사용하며 멈추게 하는 방식
+    }
+    // 다른 작업은 할 수 없도록 동기 처리에 들어간다. 
+    document.getElementById('sync-btn').addEventListener('click', () => {
+        console.log('동기 작업 시작....');
+        sleep(3000);
+        console.log('동기 작업 완료!');
+    })
+
+</script>
+
+<hr>
+
+<h3>2. '비동기' 식당의 해결책: 타이머 함수</h3>
+<pre>
+    `setTimeout`과 `setInterval`은 대표적인 비동기 함수입니다.
+    '나중에 할 일'을 브라우저에게 맡겨두고, 자신은 즉시 다음 코드를 실행하여 멈춤 현상을 막습니다.
+    </pre>
+
+<h4>setTimeout: "조금 이따가, 딱 한 번만 해줘!"</h4>
+<script>
+   console.log('setTimeout 예제 시작') 
+    // 비동기 함수를 사용하면 브라우저에 맡겨두고 다음코드를 실행한다. 함수
+
+   const timerId = setTimeout((name) => { 
+    console.log(`${name}, 3초가 지났습니다.`);
+   }, 3000, '여러분~');
+
+   console.log('타이머가 예약 되었습니다.');
+
+   // clearTimeout(timerId); // 이 코드로 예약을 취소할 수도 있다. 
+
+</script>
+
+<h4>setInterval: "계속 반복해서 해줘!" (feat. clearInterval)</h4>
+<script>
+   let count = 1;
+   const intervalId = setInterval(() => {
+        console.log(`${count}초`);
+
+        if(count++ === 5) {
+            clearInterval(intervalId);
+            console.log('반복이 중지되었습니다.');
+        }
+   } , 1000);
+
+</script>
+
+   <!-- /** 자바스크립트는 싱글스레드 이고 브라우저는 멀티스레드이다.  
+        호출한 함수가 콜스택에 쌓이는데 가장 마지막에 들어온 데이터가 가장 먼저 나간다.
+        비동기 함수가 호출되면 이 작업이 자바스크립트 엔지이 아닌 웹API에서 처리된다. 
+        웹은 줄을 선것처럼 먼저 들어온 데이터가 먼저 나간다. 그렇기 때문에 오래 걸리는 작은은
+        브라우저로 보내고 호출스택이 끝나면 테스크 큐에서 호출 스택으로 보낸다.-->
+
+<hr>
+
+<h3>3. 비동기는 어떻게 동작할까? (이벤트 루프)</h3>
+<pre>
+    자바스크립트는 한 번에 한 가지 일만 할 수 있는 '싱글 스레드'입니다.
+    하지만 브라우저는 타이머, 네트워크 요청 등 여러 일을 동시에 할 수 있는 '멀티 스레드'이죠.
+
+    1. 호출 스택(Call Stack): 코드가 실행되는 작업 공간입니다.
+    2. Web API: setTimeout 같은 오래 걸리는 작업은 브라우저에 맡겨 처리합니다.
+    3. 태스크 큐 (Task Queue): Web API에서 끝난 작업(콜백 함수)이 순서대로 대기하는 줄입니다.
+    4. 이벤트 루프 (Event Loop): Call Stack이 비었을 때, Task Queue의 작업을 Call Stack으로 옮겨 실행시킵니다.
+    </pre>
+<script>
+    console.log('Event Loop 시작!')
+
+    setTimeout(() => console.log('Event Loop: 0초 타이머 완료! (Task Queue)'), 0);
+
+    console.log('Event Loop: 끝!');
+</script>
+</body>
+</html>
