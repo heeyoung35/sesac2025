@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- 깃허브 이모지 api: 'https://api.github.com/emojis' -->
+
+    <script type="text/babel">
+
+        const { useState, useEffect, useMemo } = React;
+        const API_URL = 'https://api.github.com/emojis'
+
+
+        function SearchBox() {
+            const handleSearchChange =(keword) => {
+                const lowerKeyword = keword.toLowerCase();
+                
+            }
+            return (
+                <>
+
+                </>
+            )
+        }
+
+        function ImageBox() {
+            return (
+                <>
+
+
+
+
+
+                </>
+            )
+        }
+
+
+        // 모든 데이터와 상태를(이모지 목록, 검색 결과 URL) 관리
+        // API 통신을 책임지고, 자식들의 행동에 따라 상태를 업데이트
+        function App(SearchBox, ImageBox) {
+
+            useEffect(() => {
+                const fetchEmojiData = async () => {
+                    try {
+                        const response = await axios.get(API_URL);
+                        setEmojis(response.data)
+                    } catch (e) {
+                        console.error(e);
+                    } finally {
+                        setLoading(false);
+                    }
+                };
+                fetchEmojiData();
+            }, []);
+
+
+
+            return (
+                <>
+
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render();
+
+    </script>
+</body>
+
+</html>

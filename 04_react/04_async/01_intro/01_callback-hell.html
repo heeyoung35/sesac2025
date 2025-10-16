@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function sayHello() {
+            console.log('3초 뒤에 음식이 나왔습니다.');
+        }
+
+        console.log('햄버거를 주문합니다.');
+
+        setTimeout(sayHello, 3000); // 코드는 위에서 아래로 읽기 때문에 sayHello를 기억하고 있으면서 다음 코드를 읽어서 작업을 한다. 비동기
+        // 동기 작업은 순서가 일정하고 정확하지만 서버에서 받아오는 동안 실행할 비동기 작업의 순서를 정해야 한다. 
+
+        console.log('감자튀김을 주문합니다.');
+
+        // 콜백 지옥
+        function increase(number, callback) {
+            setTimeout(() => {
+                const result = number + 10;  // 내가 호출한 함수에 10을 더하고 두번째 콜백 함수를 실행한다. 
+                console.log(result);
+                if (callback) {
+                    callback(result);   // 작업이 끝아면 다음 할 일(callback)을 실행
+                }
+            }, 1000)
+        }
+
+        console.log('작업 시작....')
+
+        increase(0, (result) => {  // 0에 10을 더해서 콜백 함수를 실행하도록 콜백에 콜백에 콜백을 실행하는 것이 콜백지옥이다.
+            increase(result, (result) => {
+                increase(result, (result) => {
+                    console.log('작업이 끝났습니다.');
+                })
+            })
+        })
+
+    </script>
+</body>
+</html>
