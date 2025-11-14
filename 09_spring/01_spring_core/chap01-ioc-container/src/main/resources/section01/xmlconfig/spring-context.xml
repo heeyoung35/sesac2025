@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--이 xml 파일은 Ioc컨테이너에게 어떤 객체(bean)를 어떻게 만들어서 관리할지 알려주는 설정파일(설계도)이다.-->
+<!-- beans 태그는 스프링 컨테이너가 관리할 여러 개의 빈들을 감싸는 최상위 설정 루트 태그로 이 안에 관리할 빈 목록을 정리 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--Member DTO등록 : 멤버라는 아이디 값으로 멤버디티오를 빈으로 등록한다.
+        이 이름으로 객체를 꺼내어 쓸 수 있다. -->
+    <bean id="member" class="com.ohgiraffers.common.MemberDTO">
+    <!--설계도로 이 빈을 생성할 때, 생성자에 아래 값들을 전달해줘하며 생성자 주입을 등록(생성자 기반 의존성 주입)
+        스프링이 객체를 생성 할 때 생성자를 호출해야 하는데 이때 어떤 파라미터에 어떤 값을 넣어줄지 이 태그들로 지정
+         기본 생성자가 아닌, 4개의 인자를 받는 생성자를 호출하겠다는 의미이다.-->
+    <!-- 생성자 파라미터 이름을 기준으로 값을 주입, 생성자 파리미터의 이름을 기준으로 값을 주입
+         이때 name 속성을 사용하면 자바 클래스에서 생성자 파라미터의 순서가 바뀌어도 xml을 수정할 필요가 없어서
+         index 방식보다 안전하고 명확하다. -->
+        <constructor-arg index="0" value="1"/> <!-- 0번 인덱스 파라미터에 숫자 1을 전달  -->
+        <constructor-arg name="id" value="user01"/> <!-- 이름이 id인 파라미터에 user01을 전달 -->
+        <constructor-arg index="2" value="pass01"/>
+        <constructor-arg name="name" value="홀길동"/>
+    </bean>
+</beans>

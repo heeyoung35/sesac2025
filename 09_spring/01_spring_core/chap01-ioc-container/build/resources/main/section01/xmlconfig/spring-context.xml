@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- bean이라는 객체 안에서 bean 태그를 만든다. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    Member DTO등록 : 메버라는 아이디 값으로 멤버디티오를 빈으로 등록한다. -->
+    <bean id="member" class="com.ohgiraffers.common.MemberDTO">
+<!--   설계도로  이 빈을 생성할 때, 생성자에 아래 값들을 전달해줘하며 생성자 주입을 등록(생성자 기반 의존성 주입)
+멤버디티오를 다 호출할 때 인자를 두개만 전달해서 호춣할 수 없기 때문에 constructor-arg 생성자 아규먼트를 전달해 주는 것인데
+기본 생성자는 아니고 두개 더 인자를 받아야 한다고 컴파일 에러가 발생한다.
+첫번째 파라미터에 필드이름으로 정해서 생성자 값을 넝어줘도 되고 인덱스 값으로 넣어줄 수도 있다. -->
+        <constructor-arg index="0" value="1"/> <!-- 0번 인덱스 파라미터에 숫자 1을 전달  -->
+        <constructor-arg name="id" value="user01"/> <!-- 이름이 id인 파라미터에 user01을 전달 -->
+        <constructor-arg index="2" value="pass01"/>
+        <constructor-arg name="name" value="홀길동"/>
+    </bean>
+</beans>
