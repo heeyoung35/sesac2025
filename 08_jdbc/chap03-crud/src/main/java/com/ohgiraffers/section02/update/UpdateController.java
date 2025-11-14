@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.insert;
+package com.ohgiraffers.section02.update;
 
 import com.ohgiraffers.model.MenuDTO;
 
@@ -12,42 +12,39 @@ import java.util.Properties;
 import static com.ohgiraffers.common.JDBCTemplate.close;
 import static com.ohgiraffers.common.JDBCTemplate.getConnection;
 
-public class InsertController {
+public class UpdateController {
 
-    public int insertMenu(MenuDTO newMenu) {
-        // 커넥션 객체 생성
+    public int updateMenu(MenuDTO changedMenu) {
+
         Connection con = getConnection();
 
-        // PreparedStatement 객체 생성
         PreparedStatement pstmt = null;
-
         int result = 0;
+
         Properties prop = new Properties();
 
         try {
-            // 외부의 파일을 불러올 때 파일리더 또는 파일로드로 불러온다.
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/mapper/menu-query.xml"));
-            String query = prop.getProperty("insertMenu");
 
-            // 커넥션, 프리페어스테이트먼트
+            String query = prop.getProperty("updateMenu");
+
             pstmt = con.prepareStatement(query);
-            // menuDTO에서 get으로 필드에서 꺼내온 값으로 셋팅되도록 해야한다.
-            pstmt.setString(1, newMenu.getMenuName());
-            pstmt.setInt(2,newMenu.getMenuPrice());
-            pstmt.setInt(3,newMenu.getCategoryCode());
-            pstmt.setString(4,newMenu.getOrderableStatus());
+            // 사용자가 입력하여 MenuDTO에 setting 되어 있던 값을 getter를 이용하여 꺼내서 쿼리문의 위치홀더 값에 적용
+            //
+            pstmt.setString(1, changedMenu.getMenuName());
+            pstmt.setInt(2, changedMenu.getMenuPrice());
+            pstmt.setInt(3, changedMenu.getMenuCode());
 
             result = pstmt.executeUpdate();
 
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
+           e.printStackTrace();
+        } finally {
             close(pstmt);
             close(con);
         }
-
         return result;
     }
 }

@@ -1,6 +1,4 @@
-package com.ohgiraffers.section01.insert;
-
-import com.ohgiraffers.model.MenuDTO;
+package com.ohgiraffers.section03.delete;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,42 +10,34 @@ import java.util.Properties;
 import static com.ohgiraffers.common.JDBCTemplate.close;
 import static com.ohgiraffers.common.JDBCTemplate.getConnection;
 
-public class InsertController {
+public class DeleteController {
 
-    public int insertMenu(MenuDTO newMenu) {
-        // 커넥션 객체 생성
+    public int deleteMenu(int menuCode) {
         Connection con = getConnection();
 
-        // PreparedStatement 객체 생성
         PreparedStatement pstmt = null;
-
         int result = 0;
+
         Properties prop = new Properties();
 
         try {
-            // 외부의 파일을 불러올 때 파일리더 또는 파일로드로 불러온다.
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/mapper/menu-query.xml"));
-            String query = prop.getProperty("insertMenu");
 
-            // 커넥션, 프리페어스테이트먼트
+            String query = prop.getProperty("deleteMenu");
+
             pstmt = con.prepareStatement(query);
-            // menuDTO에서 get으로 필드에서 꺼내온 값으로 셋팅되도록 해야한다.
-            pstmt.setString(1, newMenu.getMenuName());
-            pstmt.setInt(2,newMenu.getMenuPrice());
-            pstmt.setInt(3,newMenu.getCategoryCode());
-            pstmt.setString(4,newMenu.getOrderableStatus());
-
+            pstmt.setInt(1, menuCode);
+            // 변화가 있는 행을 조회해 준다.
             result = pstmt.executeUpdate();
 
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             close(pstmt);
             close(con);
         }
-
         return result;
     }
 }

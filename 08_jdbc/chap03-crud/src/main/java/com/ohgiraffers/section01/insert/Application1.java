@@ -1,7 +1,5 @@
 package com.ohgiraffers.section01.insert;
 
-import com.ohgiraffers.model.MenuDTO;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,31 +10,30 @@ import java.util.Properties;
 import static com.ohgiraffers.common.JDBCTemplate.close;
 import static com.ohgiraffers.common.JDBCTemplate.getConnection;
 
-public class InsertController {
+public class Application1 {
+    public static void main(String[] args) {
 
-    public int insertMenu(MenuDTO newMenu) {
-        // 커넥션 객체 생성
         Connection con = getConnection();
-
-        // PreparedStatement 객체 생성
         PreparedStatement pstmt = null;
 
         int result = 0;
+
         Properties prop = new Properties();
 
         try {
-            // 외부의 파일을 불러올 때 파일리더 또는 파일로드로 불러온다.
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/mapper/menu-query.xml"));
+
             String query = prop.getProperty("insertMenu");
 
-            // 커넥션, 프리페어스테이트먼트
             pstmt = con.prepareStatement(query);
-            // menuDTO에서 get으로 필드에서 꺼내온 값으로 셋팅되도록 해야한다.
-            pstmt.setString(1, newMenu.getMenuName());
-            pstmt.setInt(2,newMenu.getMenuPrice());
-            pstmt.setInt(3,newMenu.getCategoryCode());
-            pstmt.setString(4,newMenu.getOrderableStatus());
+            pstmt.setString(1,"스파이시 쉬림프");
+            pstmt.setInt(2,11000);
+            pstmt.setInt(3, 4);
+            pstmt.setString(4,"Y");
 
+            // 정수값으로 값을 반환받는 이유는 추가나 삭제할 때 영향을 받은 행의 수를 반환한다.
+            // dml작업을 할 때 행의 수를 반환하기 때문이다.
+            // executeUpdate() : DML 작업을 위한 메소드이며, 영향 받은 행의 개수를 int로 반환한다.
             result = pstmt.executeUpdate();
 
         } catch (IOException e) {
@@ -48,6 +45,10 @@ public class InsertController {
             close(con);
         }
 
-        return result;
+        if (result > 0) {
+            System.out.println("메뉴 등록 성공");
+        } else {
+            System.out.println("메뉴 등록 실패 ㅜㅜ");
+        }
     }
 }
