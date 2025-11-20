@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohgiraffers.problem.ProblemsOfUsingDirectSQLTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-19T06:01:58.440Z" hostname="DESKTOP-GEHIS4F" time="0.396">
+  <properties/>
+  <testcase name="조회한 두 개의 행을 담은 객체의 동일성 비교" classname="com.ohgiraffers.problem.ProblemsOfUsingDirectSQLTests" time="0.396"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
