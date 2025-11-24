@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ohgiraffers.associationmapping.section02.onetomany.OneToManyServiceTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-24T06:12:33.815Z" hostname="DESKTOP-GEHIS4F" time="0.471">
+  <properties/>
+  <testcase name="[1] menuCode = 321, menuName = &quot;스파게티 돈가스&quot;, menuPrice = 30000, categoryCode = 321, categoryName = &quot;분식퓨전&quot;, orderableStatus = &quot;Y&quot;" classname="com.ohgiraffers.associationmapping.section02.onetomany.OneToManyServiceTests" time="0.471"/>
+  <system-out><![CDATA[15:12:30.573 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ohgiraffers.associationmapping.section02.onetomany.OneToManyServiceTests]: OneToManyServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:12:30.680 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ohgiraffers.associationmapping.Chap03AssociationMappingApplication for test class com.ohgiraffers.associationmapping.section02.onetomany.OneToManyServiceTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.0)
+
+2025-11-24T15:12:31.101+09:00  INFO 12544 --- [    Test worker] c.o.a.s.onetomany.OneToManyServiceTests  : Starting OneToManyServiceTests using Java 21.0.8 with PID 12544 (started by Admin in D:\master\09_jpa\chap03-association-mapping)
+2025-11-24T15:12:31.102+09:00  INFO 12544 --- [    Test worker] c.o.a.s.onetomany.OneToManyServiceTests  : No active profile set, falling back to 1 default profile: "default"
+2025-11-24T15:12:31.454+09:00  INFO 12544 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-24T15:12:31.472+09:00  INFO 12544 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2025-11-24T15:12:31.742+09:00  INFO 12544 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-24T15:12:31.788+09:00  INFO 12544 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 7.1.8.Final
+2025-11-24T15:12:32.272+09:00  INFO 12544 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-24T15:12:32.317+09:00  INFO 12544 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-24T15:12:32.675+09:00  INFO 12544 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@63d66761
+2025-11-24T15:12:32.676+09:00  INFO 12544 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-24T15:12:32.726+09:00  WARN 12544 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-24T15:12:32.745+09:00  INFO 12544 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/menudb]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.40
+	Default catalog/schema: menudb/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-24T15:12:33.573+09:00  INFO 12544 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-24T15:12:33.582+09:00  INFO 12544 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-24T15:12:33.807+09:00  INFO 12544 --- [    Test worker] c.o.a.s.onetomany.OneToManyServiceTests  : Started OneToManyServiceTests in 2.968 seconds (process running for 4.25)
+Hibernate: 
+    insert 
+    into
+        tbl_category
+        (category_name, ref_category_code, category_code) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        tbl_menu
+        (category_code, menu_name, menu_price, orderable_status, menu_code) 
+    values
+        (?, ?, ?, ?, ?)
+Hibernate: 
+    update
+        tbl_menu 
+    set
+        category_code=? 
+    where
+        menu_code=?
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\Admin\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.17.8\f09415827a71be7ed621c7bd02550678f28bc81c\byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
